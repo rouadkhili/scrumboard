@@ -118,7 +118,23 @@ pipeline {
             echo "Pipeline failed. Check archived logs for details."
         }
         success {
-            echo "Successfully built Docker image: ${env.DOCKER_IMAGE_NAME}:${env.DOCKER_TAG}"
-        }
+    echo "Successfully built Docker image: ${env.DOCKER_IMAGE_NAME}:${env.DOCKER_TAG}"
+
+
+    
+    script {
+        def slackToken = 'xoxb-8821529203540-8838856984993-tXRrvSY7cxDgNGC6awNyiWeK'
+        def channelId = 'C08QP04VB25' // Replace with your actual Slack channel ID
+        def message = "✅ Jenkins build succeeded for *${env.JOB_NAME}* #${env.BUILD_NUMBER}"
+
+        // Use curl to send message to Slack
+        bat """
+            curl -X POST -H "Authorization: Bearer ${slackToken}" ^
+                 -H "Content-type: application/json" ^
+                 --data "{\\"channel\\":\\"${channelId}\\",\\"text\\":\\"${message}\\"}" ^
+                 https://slack.com/api/chat.postMessage
+        """
+    }
+}
     }
 }
