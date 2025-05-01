@@ -14,9 +14,9 @@ services:
     ports:
       - 5432:5432 
     environment:
-      - POSTGRES_DB=caisse
+      - POSTGRES_DB=mydb
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=MoHaMed2003-+*
+      - POSTGRES_PASSWORD=1234
 
   scrum-app:
     build: ./scrum-app
@@ -24,9 +24,9 @@ services:
 
     environment:
       - DB_SERVER=scrum-postgres
-      - POSTGRES_DB=caisse
+      - POSTGRES_DB=mydb
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=MoHaMed2003-+*
+      - POSTGRES_PASSWORD=1234
     ports:
       - 8080:8080 
     links:
