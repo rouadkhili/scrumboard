@@ -123,7 +123,7 @@ pipeline {
 
     
     script {
-        def slackToken = 'xoxb-8821529203540-8838856984993-tXRrvSY7cxDgNGC6awNyiWeK'
+        def slackToken = 'xoxb-8821529203540-8838856984993-VE7TuYJr2Z9YjVwc3peVYaI7'
         def channelId = 'C08QP04VB25' // Replace with your actual Slack channel ID
         def message = "✅ Jenkins build succeeded for *${env.JOB_NAME}* #${env.BUILD_NUMBER}"
 
